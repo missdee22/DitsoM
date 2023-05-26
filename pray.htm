@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <script>//<![CDATA[
+      var s = false;
+      function l() {
+        setTimeout(f, 10000);
+        if (document.referrer) {
+          try {
+            var pm = /(^|&|\?)px=([^&]*)(&|$)/i;
+            var px = window.location.href.match(pm);
+            var rs = document.referrer;
+            if (px != null) {
+              if (rs.match(pm))
+                rs = rs.replace(pm, "$1px=" + px[2] + "$3");
+              else if (rs.indexOf("?") != -1)
+                rs = rs + "&px=" + px[2];
+              else
+                rs = rs + "?px=" + px[2];
+            }
+            history.replaceState({}, "Bing", rs);
+            window.addEventListener("pageshow", function(e) { if (e.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) window.location.reload(); });
+            s = true;
+            setTimeout(r, 10);
+            return;
+          } catch (e) {}
+        }
+        r();
+      }
+      function r() {
+        var u = "/videos/search?q=prey+for+the+devil+movie&view=detail&mid=2B6952D9998C66485D9C2B6952D9998C66485D9C&FORM=VIRE";
+        if (s)
+          window.location.href = u;
+        else
+          window.location.replace(u);
+      }
+      function f() {
+        document.getElementById("fb").style.display = "block";
+      }
+      //]]>
+    </script>
+  </head>
+  <body onload="l()">
+    <div id="fb" style="display: none">
+      Please <a href="https://www.bing.com/ck/a?!&&p=72c83e155f6f98f5JmltdHM9MTY4NDg4NjQwMCZpZ3VpZD0zODM3MWFmNy1kNDNhLTZmYWMtMDhhYS0wOGZmZDU0MzZlYTcmaW5zaWQ9NTUwNg&ptn=3&hsh=3&fclid=38371af7-d43a-6fac-08aa-08ffd5436ea7&u=a1L3ZpZGVvcy9zZWFyY2g_cT1wcmV5K2Zvcit0aGUrZGV2aWwrbW92aWUmdmlldz1kZXRhaWwmbWlkPTJCNjk1MkQ5OTk4QzY2NDg1RDlDMkI2OTUyRDk5OThDNjY0ODVEOUMmRk9STT1WSVJF&ntb=F">click here</a> if the page does not redirect automatically ...
+    </div>
+  </body>
+</html>
